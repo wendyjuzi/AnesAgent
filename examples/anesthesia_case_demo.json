@@ -1,0 +1,29 @@
+{
+  "case_id": "anes_demo_001",
+  "age": 78,
+  "sex": "female",
+  "height_cm": 158,
+  "weight_kg": 88,
+  "bmi": 35.2,
+  "procedure": "elective laparoscopic colectomy",
+  "asa_status": "III",
+  "allergies": ["latex"],
+  "comorbidities": ["hypertension", "COPD", "coronary artery disease"],
+  "medications": ["aspirin", "clopidogrel"],
+  "labs": {
+    "hemoglobin": 102,
+    "platelet": 138,
+    "creatinine": 168,
+    "potassium": 5.8
+  },
+  "airway": {
+    "mallampati": "III",
+    "neck_mobility": "limited",
+    "mouth_opening_cm": 3.0,
+    "osa": true
+  },
+  "aspiration_risk": true,
+  "expected_blood_loss_high": true,
+  "regional_anesthesia_candidate": true,
+  "pain_plan": "moderate to severe postoperative pain expected"
+}

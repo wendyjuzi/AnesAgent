@@ -1,0 +1,14 @@
+﻿[project]
+name = "anesthesia-agent"
+version = "0.1.0"
+description = "A LangGraph-style multi-agent workflow for anesthesia decision support."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+langgraph = ["langgraph>=0.2.0"]
+
+[tool.setuptools]
+packages = ["src", "src.anesthesia_agent"]
+
+

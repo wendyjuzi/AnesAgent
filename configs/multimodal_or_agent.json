@@ -1,0 +1,87 @@
+﻿{
+    "workflow":  "multimodal_or_anesthesia_agent",
+    "orchestration":  "langgraph_stategraph",
+    "dataset":  "Anes_Dataset_Thoracic",
+    "role_mapping":  {
+                         "perception_agent":  "circulating_nurse_eyes",
+                         "supervisor_agent":  "operating_room_coordinator",
+                         "decision_agent":  "attending_anesthesiologist_brain",
+                         "evaluation_agent":  "medical_quality_control_judge"
+                     },
+    "orchestration_pattern":  {
+                                  "name":  "three_agent_perception_decision_evaluation",
+                                  "shared_blackboard":  true,
+                                  "emergency_fast_path":  true
+                              },
+    "perception":  {
+                       "fast_stream":  {
+                                           "enabled":  true,
+                                           "target_latency":  "milliseconds",
+                                           "future_adapter":  "lightweight_visual_encoder_or_monitor_ocr",
+                                           "responsibilities":  [
+                                                                    "monitor_numeric_extraction",
+                                                                    "extreme_waveform_detection",
+                                                                    "zero_delay_high_priority_alert"
+                                                                ]
+                                       },
+                       "slow_stream":  {
+                                           "enabled":  true,
+                                           "future_adapter":  "Qwen3-VL_or_other_VLM",
+                                           "responsibilities":  [
+                                                                    "TEE_or_ultrasound_description",
+                                                                    "surgical_field_description",
+                                                                    "messy_EHR_structuring",
+                                                                    "standard_medical_terminology_mapping"
+                                                                ]
+                                       }
+                   },
+    "decision":  {
+                     "routine_mode":  "long_horizon_causal_reasoning",
+                     "emergency_mode":  "truncated_rescue_reasoning",
+                     "emergency_trigger":  [
+                                               "high_priority_alert",
+                                               "critical_alarm",
+                                               "severity_high_or_critical"
+                                           ]
+                 },
+    "evaluation":  {
+                       "hard_veto":  true,
+                       "score_dimensions":  [
+                                                "diagnosis_accuracy",
+                                                "priority_order",
+                                                "intervention_safety",
+                                                "dose_or_action_specificity",
+                                                "logic_consistency"
+                                            ]
+                   },
+    "vision_interfaces":  {
+                              "fast_stream_adapter":  "monitor_snapshot_ocr",
+                              "slow_stream_adapter":  "openai_compatible_vlm"
+                          },
+    "use_vlm":  false,
+    "vlm_api_base":  "http://127.0.0.1:8000/v1",
+    "vlm_model":  "Qwen3-VL",
+    "vlm_temperature":  0.1,
+    "vlm_max_tokens":  600,
+    "vlm_timeout_s":  60,
+    "trained_event_router_path":  "runs/event_router/event_router.joblib",
+    "require_trained_router":  false,
+    "llm_api_base":  "http://127.0.0.1:8000/v1",
+    "llm_api_key":  "EMPTY",
+    "llm_model":  "Qwen3.5-35B-A3B-FP8",
+    "llm_temperature":  0.1,
+    "llm_timeout_s":  60,
+    "llm_retries":  2,
+    "llm_max_tokens":  500,
+    "exposed_agents":  [
+                           "perception_agent",
+                           "decision_agent",
+                           "evaluation_agent"
+                       ],
+    "decision_internal_modules":  [
+                                      "airway_ventilation_check",
+                                      "hemodynamic_check",
+                                      "depth_and_drug_safety_check",
+                                      "crisis_protocol_check"
+                                  ]
+}

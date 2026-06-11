@@ -1,0 +1,47 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# Local data, models, outputs
+Anes_Dataset_Thoracic/
+data/
+runs/
+results/
+experiments/
+outputs/
+*.pt
+*.pth
+*.ckpt
+*.joblib
+*.pkl
+*.onnx
+models/
+Meta-Llama-3.1-8B-Instruct/
+
+# Extra docs / generated notes
+docs/
+QUICKSTART.md
+*.pptx
+*.pdf
+*.docx
+
+# IDE / temp
+.idea/
+.vscode/
+.DS_Store
+__tmp_nature_skills_repo/
+ars-codex-src/
+result_paper/
+result_paper_tables/
+
+# Deprecated local entrypoints not included in the public three-agent repo
+configs/anesthesia_agent.json
+configs/perioperative_crisis_agent.json
+scripts/run_anesthesia_agent.py
+scripts/run_perioperative_crisis_agent.py
+src/anesthesia_agent/workflow.py
