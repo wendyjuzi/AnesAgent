@@ -7,21 +7,28 @@ __pycache__/
 venv/
 .env
 
-# Local data, models, outputs
-Anes_Dataset_Thoracic/
+# Dataset directory placeholder only; real dataset files stay local
+Anes_Dataset_Thoracic/*
+!Anes_Dataset_Thoracic/.gitkeep
+
+# Local data, outputs, and large models
 data/
-runs/
 results/
 experiments/
 outputs/
 *.pt
 *.pth
 *.ckpt
-*.joblib
 *.pkl
 *.onnx
 models/
 Meta-Llama-3.1-8B-Instruct/
+
+# Keep only the trained event router model under runs/
+runs/*
+!runs/event_router/
+runs/event_router/*
+!runs/event_router/event_router.joblib
 
 # Extra docs / generated notes
 docs/
